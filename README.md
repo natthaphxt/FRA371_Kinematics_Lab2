@@ -32,10 +32,10 @@ Open `Lab2_PartB_template.ipynb` in **VS Code**, pick a **Python 3.10-3.12** ker
 
 | Section | What to fill |
 |---|---|
-| §1 | `M` (base frame) and `q_goal` (your hand-solved IK) |
-| §2 | FK cross-check code |
-| §3 | solve IK with `ikine_LM`, compare with `q_goal` |
-| §4 | list every branch you found |
+| 1 | `M` (base frame) and `q_goal` (your hand-solved IK) |
+| 2 | FK cross-check code |
+| 3 | solve IK with `ikine_LM`, compare with `q_goal` |
+| 4 | list every branch you found |
 
 Use only the functions listed in the **Allowable syntax** cell.
 
