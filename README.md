@@ -8,17 +8,14 @@ pip install -r requirements.txt
 python fix_swift.py
 ```
 
-- `fix_swift.py` = แก้ให้เมชแสดงใน Swift บน **Windows** (บน macOS/Linux รันได้ ไม่มีผลเสีย)
-- `requirements.txt` ล็อก `websockets==12.0` ไว้กัน Swift ค้าง
-
 ## 2. Import your robot
 
-หุ่นมาจาก URDF exporter ของ CAD: ไฟล์ `.urdf` 1 ไฟล์ + เมช `.stl` หลายไฟล์
+robot from URDF exporter CAD: `.urdf` & `.stl`
 
-1. วางไฟล์เมชไว้ใน `my_robot/meshes/`
-2. บันทึก URDF เป็น `my_robot/robot.urdf`
+1. mesh in `my_robot/meshes/`
+2. urdf in `my_robot/robot.urdf`
 
-ใน `robot.urdf` ทุก path เมชต้องเป็น `package://my_robot/meshes/ชื่อไฟล์.stl`
+in `robot.urdf` all path `package://my_robot/meshes/ชื่อไฟล์.stl`
 
 ## 3. Setup
 
@@ -27,11 +24,11 @@ python fix_swift.py
 
 ## 4. Use ans from Part A
 
-เติมเฉพาะบรรทัดที่มี `# edit here` / `# fill in` แล้วรันเซลล์นั้นเพื่อดูผล
+add or edit line `# edit here` / `# fill in` and run it to see output
 
-**ตัวแปรหลัก**
+**Variable**
 
-| ตัวแปร | คืออะไร | มาจากไหน |
+| Variable | คืออะไร | มาจากไหน |
 |---|---|---|
 | `M` | เป้าหมายใน **base frame** (`Pobj`), `[x, y, z]` เมตร | Part A: แปลง `M` (camera frame) ผ่าน `BaseCameraT` (ข้อ 1) → base frame (ข้อ 4) |
 | `q_goal` | คำตอบ IK ที่แก้ด้วยมือ (เลือกมา 1 branch) | Part A ข้อ 4 |
