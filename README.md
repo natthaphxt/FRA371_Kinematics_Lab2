@@ -1,10 +1,4 @@
 # FRA371 Lab 2 - Part B : Inverse Kinematics
-
-ยืนยันคำตอบ IK ที่แก้ **ด้วยมือใน Part A**: สั่งหุ่นไปที่เป้าหมาย `M` ในหน้าต่าง Swift 3D
-แล้ว cross-check ด้วย Forward Kinematics ว่าปลายมือถึง `M` จริง (คลาดไม่เกิน ±0.1)
-
-> ทำตามข้อ **1 → 5** ตามลำดับ
-
 ---
 
 ## 1. Install
