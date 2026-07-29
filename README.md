@@ -22,11 +22,8 @@ python fix_swift.py
 
 ## 3. Setup
 
-1. เปิด `Lab2_PartB.ipynb` ใน VS Code
-2. เลือก kernel เป็น **Python 3.10–3.12**
-3. รันเซลล์ **0. Setup** ก่อน → หุ่นควรโผล่ในหน้าต่าง Swift
-
-> ยังไม่ต้องกด Run All ตอนนี้ เพราะเซลล์ข้อ 1–4 ยังว่าง ต้องเติมคำตอบก่อน (ข้อ 5)
+1. Open `Lab2_PartB.ipynb` in VS Code
+2. run cell **0. Setup** first → robot show in Swift
 
 ## 4. Use ans from Part A
 
