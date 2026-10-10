@@ -1,4 +1,10 @@
 # FRA371 Lab 2 - Part B : Inverse Kinematics
+
+ยืนยันคำตอบ IK ที่แก้ **ด้วยมือใน Part A**: สั่งหุ่นไปที่เป้าหมาย `M` ในหน้าต่าง Swift 3D
+แล้ว cross-check ด้วย Forward Kinematics ว่าปลายมือถึง `M` จริง (คลาดไม่เกิน 0.03 m)
+
+> ทำตามข้อ **1 → 5** ตามลำดับ
+
 ---
 
 ## 1. Install
@@ -8,43 +14,49 @@ pip install -r requirements.txt
 python fix_swift.py
 ```
 
+- `fix_swift.py` = แก้ให้เมชแสดงใน Swift บน **Windows** (บน macOS/Linux รันได้ ไม่มีผลเสีย)
+- `requirements.txt` ล็อก `websockets==12.0` ไว้กัน Swift ค้าง
+
 ## 2. Import your robot
 
-robot from URDF exporter CAD: `.urdf` & `.stl`
+หุ่นมาจาก URDF exporter ของ CAD: ไฟล์ `.urdf` 1 ไฟล์ + เมช `.stl` หลายไฟล์
 
-1. mesh in `my_robot/meshes/`
-2. urdf in `my_robot/robot.urdf`
+1. วางไฟล์เมชไว้ใน `my_robot/meshes/`
+2. บันทึก URDF เป็น `my_robot/robot.urdf`
 
-in `robot.urdf` all path `package://my_robot/meshes/ชื่อไฟล์.stl`
+ใน `robot.urdf` ทุก path เมชต้องเป็น `package://my_robot/meshes/ชื่อไฟล์.stl`
 
 ## 3. Setup
 
-1. Open `Lab2_PartB.ipynb` in VS Code
-2. run cell **0. Setup** first → robot show in Swift
+1. เปิด `Lab2_PartB.ipynb` ใน VS Code
+2. เลือก kernel เป็น **Python 3.10–3.12**
+3. รันเซลล์ **0. Setup** ก่อน → หุ่นควรโผล่ในหน้าต่าง Swift
 
-## 4. Use ans from Part A
+> ยังไม่ต้องกด Run All ตอนนี้ เพราะเซลล์ข้อ 1–4 ยังว่าง ต้องเติมคำตอบก่อน (ข้อ 5)
 
-add or edit line `# edit here` / `# fill in` and run it to see output
+## 4. เติมคำตอบจาก Part A แล้วรันทีละข้อ
 
-**Variable**
+เติมเฉพาะบรรทัดที่มี `# edit here` แล้วรันเซลล์นั้นเพื่อดูผล
 
-| Variable | คืออะไร | มาจากไหน |
+**ตัวแปรหลัก**
+
+| ตัวแปร | คืออะไร | มาจากไหน |
 |---|---|---|
-| `M` | เป้าหมายใน **base frame** (`Pobj`), `[x, y, z]` เมตร | Part A: แปลง `M` (camera frame) ผ่าน `BaseCameraT` (ข้อ 1) → base frame (ข้อ 4) |
+| `M` | เป้าหมายใน **base frame** (`Pobj`), `[x, y, z]` เมตร | Part A ข้อ 1: แปลง `M` จาก camera frame มาเป็น base frame ด้วย inverse ของ `T` ที่ได้รับ |
 | `q_goal` | คำตอบ IK ที่แก้ด้วยมือ (เลือกมา 1 branch) | Part A ข้อ 4 |
-| `branches` | คำตอบ IK **ทุก branch** | Part A ข้อ 2/3 |
+| `branches` | คำตอบ IK **ทุก branch** | Part A ข้อ 4 |
 
-หน่วยของ `q`: revolute → rad, prismatic → m · เกณฑ์ผ่าน: error ≤ **±0.1**
+หน่วยของ `q`: revolute → rad, prismatic → m · เกณฑ์ผ่าน: error ≤ **0.03 m**
 
 **Section 1 — target M and q**
-- ใส่จุด `M` ตามที่กลุ่มได้รับ ลงในช่องที่มี `# edit here`
+- ใส่ตำแหน่งชิ้นงานใน Base frame (`Pobj`) ที่คำนวณได้จาก Part A ข้อ 1 ลงในช่องที่มี `# edit here`
 - ใส่ Configuration `q` ของแต่ละข้อต่อ (rad, meter) ลงในช่องที่มี `# edit here`
 - ให้เขียนสั่งให้แขนไปอยู่ที่จุดบอลสีแดงที่กำหนดขึ้นมา ถ้าถูกต้องคือปลายแขนจะต้องไปอยู่ที่บอลตำแหน่ง `M`
 
 **Section 2 — cross-check with FK**
 - ในช่องที่มี `# edit here` ให้เขียนหาตำแหน่งปลายมือ (`tip`) จาก Forward Kinematic ของค่า `q`
 - หาค่า error คือระยะห่างระหว่าง `tip` กับจุด `M`
-- ถ้าถูกต้องคือ `tip` จะมีค่าใกล้เคียงกับจุด `M` และ error มีค่าใกล้ 0 (ไม่เกิน ±0.1)
+- ถ้าถูกต้องคือ `tip` จะมีค่าใกล้เคียงกับจุด `M` และ error มีค่าใกล้ 0 (ไม่เกิน 0.03 m)
 
 **Section 3 — let the toolbox solve IK (`ikine_LM`)**
 - ในช่องที่มี `# edit here` ให้เรียกใช้ `ikine_LM` เพื่อให้ toolbox หาค่า `q` จากตำแหน่ง `M`
@@ -53,7 +65,7 @@ add or edit line `# edit here` / `# fill in` and run it to see output
 
 **Section 4 — check every branch**
 - นำค่า `q` ของทุก Branch จาก Part A ข้อ 4 มาตรวจด้วย Forward Kinematic ทีละ Branch
-- ถ้าถูกต้องคือทุก Branch จะให้ error ใกล้ 0 (ไม่เกิน ±0.1) แปลว่าทุกคำตอบไปถึงจุด `M` ได้จริง
+- ถ้าถูกต้องคือทุก Branch จะให้ error ใกล้ 0 (ไม่เกิน 0.03 m) แปลว่าทุกคำตอบไปถึงจุด `M` ได้จริง
 
 > ใช้ได้เฉพาะฟังก์ชันที่ระบุในเซลล์ **Allowable syntax** เท่านั้น
 
