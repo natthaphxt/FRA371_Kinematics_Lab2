@@ -30,7 +30,19 @@ python fix_swift.py
 
 1. เปิด `Lab2_PartB.ipynb` ใน VS Code
 2. เลือก kernel เป็น **Python 3.10–3.12**
-3. รันเซลล์ **0. Setup** ก่อน → หุ่นควรโผล่ในหน้าต่าง Swift
+3. รันเซลล์ **0.1 Check your URDF** ก่อน ต้องได้ `URDF check: OK` ถ้าไม่ผ่านให้แก้ `robot.urdf` ตามรายการที่พิมพ์ออกมาแล้วรันใหม่
+4. รันเซลล์ **0.2 Setup** → หุ่นควรโผล่ในหน้าต่าง Swift
+
+**ถ้า `URDF check` ไม่ผ่าน** ให้แก้ไฟล์ `my_robot/robot.urdf` ตามข้อความที่ขึ้น แล้วรันเซลล์ 0.1 ใหม่จนได้ `URDF check: OK`
+
+| ข้อความที่ขึ้น | วิธีแก้ |
+|---|---|
+| `non-ASCII characters on line ...` | ลบตัวอักษรที่ไม่ใช่ภาษาอังกฤษในบรรทัดนั้น เช่น comment ภาษาไทย |
+| `... moving joints - need exactly 3` | ต้องมี joint ที่ขยับได้ 3 ตัวพอดี และ joint ที่ต่อไปยัง end-effector ต้องเป็น `type="fixed"` |
+| `axis "..." is not exactly x, y or z` | แก้ `<axis xyz="..."/>` ของ joint นั้น โดยปัดค่าที่ใกล้ 0 เป็น 0 และค่าที่ใกล้ ±1 เป็น ±1 เช่น `0 0 1` |
+| `needs <limit lower="..." upper="..."/>` | เพิ่ม `<limit lower="..." upper="..."/>` ให้ joint นั้น โดย lower ต้องน้อยกว่า upper |
+| `mesh path "..." must start with package://my_robot/meshes/` | แก้ `filename` ของ mesh ให้ขึ้นต้นด้วย `package://my_robot/meshes/` |
+| `mesh file not found: ...` | วางไฟล์ mesh ชื่อนั้นไว้ใน `my_robot/meshes/` |
 
 > ยังไม่ต้องกด Run All ตอนนี้ เพราะเซลล์ข้อ 1–4 ยังว่าง ต้องเติมคำตอบก่อน (ข้อ 5)
 
