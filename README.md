@@ -1,9 +1,7 @@
 # FRA371 Lab 2 - Part B : Inverse Kinematics
 
 ยืนยันคำตอบ IK ที่แก้ **ด้วยมือใน Part A**: สั่งหุ่นไปที่เป้าหมาย `M` ในหน้าต่าง Swift 3D
-แล้ว cross-check ด้วย Forward Kinematics ว่าปลายมือถึง `M` จริง (คลาดไม่เกิน 0.03 m)
-
-> ทำตามข้อ **1 → 5** ตามลำดับ
+แล้ว cross-check ด้วย Forward Kinematics ว่าปลายมือถึง `M` จริง 
 
 ---
 
@@ -19,21 +17,18 @@ python fix_swift.py
 
 ## 2. Import your robot
 
-หุ่นมาจาก URDF exporter ของ CAD: ไฟล์ `.urdf` 1 ไฟล์ + เมช `.stl` หลายไฟล์
+หุ่นมาจาก URDF exporter ของ CAD: ไฟล์ `.urdf` 1 ไฟล์ + meshes `.stl` หลายไฟล์
 
-1. วางไฟล์เมชไว้ใน `my_robot/meshes/`
+1. วางไฟล์ meshes ไว้ใน `my_robot/meshes/`
 2. บันทึก URDF เป็น `my_robot/robot.urdf`
 
 ใน `robot.urdf` ทุก path เมชต้องเป็น `package://my_robot/meshes/ชื่อไฟล์.stl`
 
 ## 3. Setup
 
-1. เปิด `Lab2_PartB.ipynb` ใน VS Code
-2. เลือก kernel เป็น **Python 3.10–3.12**
-3. รันเซลล์ **0.1 Setup** → หุ่นควรโผล่ในหน้าต่าง Swift
-4. เติมตาราง MDH และ tool ของหุ่นจาก LAB1 ในเซลล์ **0.2** แล้วรันเซลล์ cross-check ต้องได้ `MDH vs URDF: OK` ถ้าไม่ผ่านให้แก้ตาราง MDH หรือ `robot.urdf` ให้ตรงกันก่อนทำข้อ 1
+1. รันเซลล์ **0.1 Setup** → หุ่นควรโผล่ในหน้าต่าง Swift
+2. เติมตาราง MDH และ tool ของหุ่นจาก LAB1 ในเซลล์ **0.2** แล้วรันเซลล์ cross-check ต้องได้ `MDH vs URDF: OK` ถ้าไม่ผ่านให้แก้ตาราง MDH หรือ `robot.urdf` ให้ตรงกันก่อนทำข้อ 1
 
-> ยังไม่ต้องกด Run All ตอนนี้ เพราะเซลล์ข้อ 1–4 ยังว่าง ต้องเติมคำตอบก่อน (ข้อ 5)
 
 ## 4. เติมคำตอบจาก Part A แล้วรันทีละข้อ
 
@@ -68,7 +63,6 @@ python fix_swift.py
 - นำค่า `q` ของทุก Branch จาก Part A ข้อ 4 มาตรวจด้วย Forward Kinematic ทีละ Branch
 - ถ้าถูกต้องคือทุก Branch จะให้ error ใกล้ 0 (ไม่เกิน 0.03 m) แปลว่าทุกคำตอบไปถึงจุด `M` ได้จริง
 
-> ใช้ได้เฉพาะฟังก์ชันที่ระบุในเซลล์ **Allowable syntax** เท่านั้น
 
 ---
 
