@@ -2,8 +2,9 @@
 
 ใช้กับสถานการณ์ที่ 1 (Part A ข้อ 1 และข้อ 4, Part B) ทุกค่ามีหน่วยเป็นเมตร
 
-- **M** คือตำแหน่งชิ้นงานที่กล้องรายงาน เขียนอยู่ใน Camera frame
-- **T** คือ homogeneous transformation matrix ของ Base frame เทียบกับ Camera frame 
+- **M** คือตำแหน่งชิ้นงานที่กล้องรายงาน เทียบกับ Camera frame
+- **T** ( $= {}^{\text{Camera}}_{\text{Base}}T$ ) คือ homogeneous transformation matrix ของ Base frame เทียบกับ Camera frame
+
 
 ## G01
 

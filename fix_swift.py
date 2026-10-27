@@ -1,14 +1,3 @@
-"""
-One-time fix for swift-sim on Windows (run once after installing requirements):
-
-    python fix_swift.py
-
-Bug: SwiftRoute serves mesh files with a leading '/' before the drive letter
-(e.g. '/D:/..'), which open() rejects on Windows -> every mesh 404s and the 3D
-viewer crashes with "Application error: a client-side exception has occurred".
-This inserts a one-line fix so the path opens correctly. Safe to run repeatedly.
-(Not needed on macOS/Linux, but harmless.)
-"""
 import os
 
 try:
